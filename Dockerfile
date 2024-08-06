@@ -5,4 +5,4 @@ RUN npm install -g pnpm
 RUN pnpm install
 COPY src tsconfig*.json ./
 RUN pnpm build
-CMD ["pnpm", "start:prod"]
+CMD ["pnpm", "start:dev"]
