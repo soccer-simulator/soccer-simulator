@@ -16,7 +16,7 @@ interface SwaggerCommandOptions {
 
 @Command({
   name: 'swagger',
-  description: 'generate swagger.json API specification file',
+  description: 'generate swagger.json API specification file'
 })
 export class SwaggerCommand extends CommandRunner {
   constructor(private swaggerService: SwaggerService) {
@@ -25,27 +25,23 @@ export class SwaggerCommand extends CommandRunner {
 
   @Option({
     flags: '-o --output [output]',
-    description: 'output directory path',
+    description: 'output directory path'
   })
   parseOutput(output: string): string {
     return output;
   }
 
-  async run(
-    params: Array<string>,
-    options?: SwaggerCommandOptions,
-  ): Promise<void> {
+  async run(params: Array<string>, options?: SwaggerCommandOptions): Promise<void> {
     const { output = process.cwd() } = options || {};
 
     const outputDirectoryPath = resolve(output);
-    if (await directoryExists(outputDirectoryPath)) {
+    if (!(await directoryExists(outputDirectoryPath))) {
       try {
         await ensureDir(outputDirectoryPath);
       } catch (e) {
-        console.error(
-          `Unable to create output directory "${outputDirectoryPath}"`,
-        );
+        console.error(`Unable to create output directory "${outputDirectoryPath}"`);
         process.exit(1);
+        return;
       }
     }
 
@@ -59,7 +55,10 @@ export class SwaggerCommand extends CommandRunner {
       console.log(e);
       console.error(`Unable to write output file "${outputFilePath}"`);
       process.exit(2);
+      return;
     }
+
+    await app.close();
 
     console.info(`Output file "${outputFilePath}" has been generated`);
   }

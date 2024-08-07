@@ -8,6 +8,6 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [DatabaseModule, SwaggerModule, UserModule],
   controllers: [AppController],
-  providers: [],
+  providers: []
 })
 export class AppModule {}

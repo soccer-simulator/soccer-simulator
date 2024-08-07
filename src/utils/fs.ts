@@ -1,8 +1,8 @@
-import fs from 'fs-extra';
+import { stat, statSync } from 'fs-extra';
 
 export async function fileExists(path: string): Promise<boolean> {
   try {
-    return (await fs.stat(path)).isFile();
+    return (await stat(path)).isFile();
   } catch (e) {
     return false;
   }
@@ -10,7 +10,7 @@ export async function fileExists(path: string): Promise<boolean> {
 
 export function fileExistsSync(path: string): boolean {
   try {
-    return fs.statSync(path).isFile();
+    return statSync(path).isFile();
   } catch (e) {
     return false;
   }
@@ -18,7 +18,7 @@ export function fileExistsSync(path: string): boolean {
 
 export async function directoryExists(path: string): Promise<boolean> {
   try {
-    return (await fs.stat(path)).isDirectory();
+    return (await stat(path)).isDirectory();
   } catch (e) {
     return false;
   }
@@ -26,7 +26,7 @@ export async function directoryExists(path: string): Promise<boolean> {
 
 export function directoryExistsSync(path: string): boolean {
   try {
-    return fs.statSync(path).isDirectory();
+    return statSync(path).isDirectory();
   } catch (e) {
     return false;
   }

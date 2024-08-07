@@ -7,7 +7,7 @@ export class AppController {
 
   @ApiOperation({
     operationId: 'version',
-    description: 'Get application name and version',
+    description: 'Get application name and version'
   })
   @ApiOkResponse({ description: 'Application name and version' })
   @Get()

@@ -12,11 +12,11 @@ export class AuthController {
 
   @ApiOperation({
     operationId: 'authenticate',
-    description: 'Authenticate a user',
+    description: 'Authenticate a user'
   })
   @ApiCreatedResponse({
     type: AuthResponse,
-    description: 'User is authenticated successfully',
+    description: 'User is authenticated successfully'
   })
   @Post()
   authenticate(@Body() request: AuthRequest): AuthResponse {
