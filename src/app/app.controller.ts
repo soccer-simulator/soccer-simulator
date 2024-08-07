@@ -1,13 +1,17 @@
 import { Get, Controller } from '@nestjs/common';
-
-import { AppService } from './app.service';
+import { ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
+  @ApiOperation({
+    operationId: 'version',
+    description: 'Get application name and version',
+  })
+  @ApiOkResponse({ description: 'Application name and version' })
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  version(): string {
+    return 'Soccer Simulator';
   }
 }

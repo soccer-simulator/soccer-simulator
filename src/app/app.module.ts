@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DataCommand } from '../cli/data-command';
+import { SwaggerModule } from './swagger/swagger.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [],
+  imports: [SwaggerModule, UserModule],
   controllers: [AppController],
-  providers: [AppService, DataCommand],
+  providers: [],
 })
 export class AppModule {}
