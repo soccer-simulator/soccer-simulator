@@ -7,7 +7,11 @@ services:
       dockerfile: Dockerfile
     container_name: soccer-simulator
     environment:
-      - PORT=${PORT}
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=soccer-simulator
+      - DB_USER=soccer-simulator
+      - DB_PASSWORD=postgres
     ports:
       - '8080:3000'
     volumes:
@@ -20,6 +24,8 @@ services:
     container_name: soccer-simulator-db
     restart: always
     environment:
+      - POSTGRES_DB=soccer-simulator
+      - POSTGRES_USER=soccer-simulator
       - POSTGRES_PASSWORD=postgres
     ports:
       - '5432:5432'

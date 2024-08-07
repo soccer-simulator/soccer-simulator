@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm
 RUN pnpm install
-COPY src tsconfig*.json ./
+COPY src ./src
+COPY tsconfig*.json ./
 RUN pnpm build
 CMD ["pnpm", "start:dev"]
