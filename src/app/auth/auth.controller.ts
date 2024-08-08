@@ -1,5 +1,5 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, UnauthorizedException } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
 import { AuthRequest } from './dto/auth-request';
@@ -19,6 +19,7 @@ export class AuthController {
     type: AuthResponse,
     description: 'User is authenticated successfully'
   })
+  @ApiUnauthorizedResponse({ description: 'User is not authenticated' })
   @Public()
   @Post()
   @HttpCode(HttpStatus.OK)
