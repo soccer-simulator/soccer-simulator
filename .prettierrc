@@ -6,7 +6,6 @@
   "quoteProps": "as-needed",
   "trailingComma": "none",
   "bracketSpacing": true,
-  "bracketSameLine": false,
   "arrowParens": "always",
   "singleQuote": true,
   "endOfLine": "auto"

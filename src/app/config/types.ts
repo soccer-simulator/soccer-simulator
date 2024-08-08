@@ -7,6 +7,11 @@ export class AppConfigDb {
   passwordSalt?: string;
 }
 
+export class AppConfigAuth {
+  secret: string;
+}
+
 export class AppConfig {
   db: AppConfigDb;
+  auth: AppConfigAuth;
 }

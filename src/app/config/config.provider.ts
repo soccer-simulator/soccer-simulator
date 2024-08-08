@@ -5,21 +5,22 @@ import { readJson } from 'fs-extra';
 
 import { fileExists } from '../../utils/fs';
 
+import { defaultAppConfig } from './const';
 import { AppConfig, AppConfigDb } from './types';
 import { AppConfigZod } from './zod';
 
 export const configProvider: Provider = {
   provide: 'Config',
-  useFactory: async (): Promise<AppConfig | undefined> => {
+  useFactory: async (): Promise<AppConfig> => {
     const configFilePath = resolve(__dirname, '../../config.json');
     if (!(await fileExists(configFilePath))) {
-      return undefined;
+      return defaultAppConfig;
     }
 
     const config = await readJson(configFilePath);
     const result = AppConfigZod.safeParse(config);
     if (!result.success) {
-      return undefined;
+      return defaultAppConfig;
     }
 
     const { data: typedConfig } = result;

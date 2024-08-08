@@ -9,6 +9,11 @@ export const AppConfigDbZod = z.object({
   passwordSalt: z.string().optional()
 });
 
+export const AppConfigAuthZod = z.object({
+  secret: z.string()
+});
+
 export const AppConfigZod = z.object({
-  db: AppConfigDbZod
+  db: AppConfigDbZod,
+  auth: AppConfigAuthZod
 });

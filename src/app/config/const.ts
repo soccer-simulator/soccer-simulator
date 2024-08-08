@@ -8,5 +8,8 @@ export const defaultAppConfig: AppConfig = {
     user: 'soccer-simulator',
     password: 'postgres',
     passwordSalt: 'ice-ice-baby'
+  },
+  auth: {
+    secret: 'keep this very secure'
   }
 };
