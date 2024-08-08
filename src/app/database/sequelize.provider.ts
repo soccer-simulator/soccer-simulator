@@ -1,22 +1,16 @@
 import { Provider } from '@nestjs/common';
 import { Sequelize } from 'sequelize-typescript';
 
+import { AppConfig } from '../config/types';
+
 export const sequelizeProvider: Provider = {
   provide: 'Sequelize',
-  useFactory: async () => {
-    const { DB_HOST: host, DB_PORT: port, DB_NAME: database, DB_USER: username, DB_PASSWORD: password } = process.env;
-
-    const sequelize = new Sequelize({
-      dialect: 'postgres',
-      host,
-      port: port !== undefined ? Number(port) : undefined,
-      database,
-      username,
-      password
-    });
-
+  inject: ['Config'],
+  useFactory: async (appConfig?: AppConfig) => {
+    const { db } = appConfig || {};
+    const { host, port, name: database, user: username, password } = db || {};
+    const sequelize = new Sequelize({ dialect: 'postgres', host, port, database, username, password });
     await sequelize.authenticate();
-
     return sequelize;
   }
 };

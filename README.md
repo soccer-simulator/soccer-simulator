@@ -38,6 +38,13 @@ DB_USER=soccer-simulator
 DB_PASSWORD=postgres
 ```
 
+or build the project and create configuration file `dist/config.json`:
+
+```bash
+pnpm build
+pnpm cli config
+```
+
 Start the application using:
 
 ```

@@ -5,8 +5,9 @@ import { SwaggerModule } from '@nestjs/swagger';
 
 import { AppModule } from './app/app.module';
 import { SwaggerService } from './app/swagger/swagger.service';
+import { APP_CONVENTION } from './const';
 
-config();
+config({ convention: APP_CONVENTION });
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
