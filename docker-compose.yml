@@ -22,7 +22,6 @@ services:
   db:
     image: postgres
     container_name: soccer-simulator-db
-    restart: always
     environment:
       - POSTGRES_DB=soccer-simulator
       - POSTGRES_USER=soccer-simulator
