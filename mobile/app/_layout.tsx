@@ -1,24 +1,14 @@
-import React, { StyleSheet, View, ViewStyle } from 'react-native';
 import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AppLayout() {
-  const insets = useSafeAreaInsets();
-
-  const layoutStyle: ViewStyle = {
-    paddingTop: insets.top,
-    paddingBottom: insets.bottom,
-    paddingLeft: insets.left,
-    paddingRight: insets.right,
-    ...styles.layout
-  };
-
   return (
-    <View style={layoutStyle}>
+    <SafeAreaView style={styles.layout}>
       <Slot />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -26,4 +16,4 @@ const styles = StyleSheet.create({
   layout: {
     flex: 1
   }
-})
+});
