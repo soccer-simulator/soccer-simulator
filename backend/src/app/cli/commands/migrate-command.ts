@@ -32,7 +32,7 @@ export class MigrateCommand extends CommandRunner {
     return Boolean(down);
   }
 
-  async run(params: Array<string>, options?: MigrateCommandOptions): Promise<void> {
+  async run(_params: Array<string>, options?: MigrateCommandOptions): Promise<void> {
     const { down = false } = options || {};
 
     const migrationsDirectoryPath = resolve(__dirname, '../../../migrations');

@@ -31,14 +31,14 @@ export class SwaggerCommand extends CommandRunner {
     return output;
   }
 
-  async run(params: Array<string>, options?: SwaggerCommandOptions): Promise<void> {
+  async run(_params: Array<string>, options?: SwaggerCommandOptions): Promise<void> {
     const { output = process.cwd() } = options || {};
 
     const outputDirectoryPath = resolve(output);
     if (!(await directoryExists(outputDirectoryPath))) {
       try {
         await ensureDir(outputDirectoryPath);
-      } catch (e) {
+      } catch (_) {
         console.error(`Unable to create output directory "${outputDirectoryPath}"`);
         process.exit(1);
         return;

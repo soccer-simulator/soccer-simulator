@@ -25,7 +25,7 @@ export class ConfigCommand extends CommandRunner {
     return Boolean(overwrite);
   }
 
-  async run(params: Array<string>, options?: ConfigCommandOptions): Promise<void> {
+  async run(_params: Array<string>, options?: ConfigCommandOptions): Promise<void> {
     const { overwrite } = options || {};
 
     const configFilePath = resolve(distDirectoryPath, 'config.json');
@@ -40,7 +40,7 @@ export class ConfigCommand extends CommandRunner {
       } else {
         console.warn(`Configuration file "${configFilePath}" already exists`);
       }
-    } catch (e) {
+    } catch (_) {
       console.error('Unable to create configuration file');
       process.exit(1);
     }
